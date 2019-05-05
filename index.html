@@ -1,3 +1,57 @@
+<!DOCTYPE html>
 <html>
-    <p>hello world</p>
+
+<head>
+    <title>handwriting.js</title>
+    <meta charset='utf-8'>
+</head>
+
+<body>
+<div>
+  <script type="text/javascript" src="handwriting.canvas.js"></script>
+  <span style="display : inline-block">
+    <!--PenSize <span id="lineWidth">13</span><input type="range" id="penSize" min="1" max="30" value="3">
+    <br>-->
+    <canvas id="canvas" width="600" height="600" style="border: 2px solid; cursor: crosshair;"></canvas>
+    <br>
+    <!--<form>
+      Language:
+      <select id="language">
+        <option value="zh_TW" selected="selected">Chinese</option>
+        <option value="ja">Japanese</option>
+        <option value="en">English</option>
+      </select>
+    </form>-->
+    <br>
+    <button onclick="canvas.erase();">Erase</button>
+    <button onclick="
+      //var e = document.getElementById('language');
+      //canvas.setOptions({language: e.options[e.selectedIndex].value});
+      canvas.recognize();
+    ">Send</button>
+    <button onclick="canvas.undo()">Undo</button>
+    <button onclick="canvas.redo()">Redo</button>
+    <br>
+    result: <span id="result"></span>
+  </span>
+  <script type="text/javascript" defer="">
+    var canvas = new handwriting.Canvas(document.getElementById('canvas'), 3);
+    canvas.cxt.canvas.width  = 600;
+    canvas.cxt.canvas.height = 600;
+    canvas.setCallBack(function(data, err) {
+      if (err) throw err;
+      else document.getElementById("result").innerHTML = data;
+    });
+    canvas.set_Undo_Redo(true, true);
+    /*var penSize = document.getElementById("penSize");
+    penSize.addEventListener("mousemove", function() {
+      document.getElementById("lineWidth").innerHTML = penSize.value;
+    });
+    penSize.addEventListener("change", function(){
+      canvas.setLineWidth(penSize.value);
+    });*/
+  </script>
+</div>
+</body>
+
 </html>
