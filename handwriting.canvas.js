@@ -104,49 +104,7 @@
         this.trace.push(w);
         this.drawing = false;
         if (this.allowUndo) this.step.push(this.canvas.toDataURL());
-    };
-
-
-    handwriting.Canvas.prototype.touchStart = function(e) {
-        e.preventDefault();
-        this.cxt.lineWidth = this.lineWidth;
-        this.handwritingX = [];
-        this.handwritingY = [];
-        var de = document.documentElement;
-        var box = this.canvas.getBoundingClientRect();
-        var top = box.top + window.pageYOffset - de.clientTop;
-        var left = box.left + window.pageXOffset - de.clientLeft;
-        var touch = e.changedTouches[0];
-        touchX = touch.pageX - left;
-        touchY = touch.pageY - top;
-        this.handwritingX.push(touchX);
-        this.handwritingY.push(touchY);
-        this.cxt.beginPath();
-        this.cxt.moveTo(touchX, touchY);
-    };
-
-    handwriting.Canvas.prototype.touchMove = function(e) {
-        e.preventDefault();
-        var touch = e.targetTouches[0];
-        var de = document.documentElement;
-        var box = this.canvas.getBoundingClientRect();
-        var top = box.top + window.pageYOffset - de.clientTop;
-        var left = box.left + window.pageXOffset - de.clientLeft;
-        var x = touch.pageX - left;
-        var y = touch.pageY - top;
-        this.handwritingX.push(x);
-        this.handwritingY.push(y);
-        this.cxt.lineTo(x, y);
-        this.cxt.stroke();
-    };
-
-    handwriting.Canvas.prototype.touchEnd = function(e) {
-        var w = [];
-        w.push(this.handwritingX);
-        w.push(this.handwritingY);
-        w.push([]);
-        this.trace.push(w);
-        if (this.allowUndo) this.step.push(this.canvas.toDataURL());
+        this.recognize();
     };
 
     handwriting.Canvas.prototype.undo = function() {
@@ -193,7 +151,7 @@
         imageObj.src = url;
     }
 
-    handwriting.recognize = function(trace, options, callback) {
+    handwriting.recognize = function() {
         if (handwriting.Canvas && this instanceof handwriting.Canvas) {
             trace = this.trace;
             options = this.options;
