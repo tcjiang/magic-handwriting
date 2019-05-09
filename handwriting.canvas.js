@@ -35,9 +35,6 @@
         cvs.addEventListener("mousedown", this.mouseDown.bind(this));
         cvs.addEventListener("mousemove", this.mouseMove.bind(this));
         cvs.addEventListener("mouseup", this.mouseUp.bind(this));
-        cvs.addEventListener("touchstart", this.touchStart.bind(this));
-        cvs.addEventListener("touchmove", this.touchMove.bind(this));
-        cvs.addEventListener("touchend", this.touchEnd.bind(this));
         this.callback = undefined;
         this.recognize = handwriting.recognize;
     };
@@ -165,7 +162,7 @@
                     "writing_area_height": options.height || this.width || undefined
                 },
                 "ink": trace,
-                "language": options.language || "zh_TW"
+                "language": options.language || "zh"
             }]
         });
         var xhr = new XMLHttpRequest();
