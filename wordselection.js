@@ -4,11 +4,16 @@ canvas.setCallBack(function(data, err) {
         throw err;
     }
     else {
-    	var result =  document.getElementById("result");
+        var result = document.getElementById("result");
         result.innerHTML = "";
         data.forEach(function(word) {
-		    var div = document.createElement("div");
+            var div = document.createElement("div");
             div.innerHTML = word;
+            div.addEventListener("click", function() {
+	        console.log(this.innerHTML);
+		var output = document.getElementById("output");
+		output.innerHTML += this.innerHTML;
+	    });
             result.appendChild(div);
         });
     }
