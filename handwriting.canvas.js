@@ -116,6 +116,7 @@
             if (this.allowRedo) {
                 this.redo_step.push(this.step.pop());
                 this.redo_trace.push(this.trace.pop());
+                this.recognize();
             } else {
                 this.step.pop();
                 this.trace.pop();
@@ -129,6 +130,7 @@
         this.step.push(this.redo_step.pop());
         this.trace.push(this.redo_trace.pop());
         loadFromUrl(this.step.slice(-1)[0], this);
+        this.recognize();
     };
 
     handwriting.Canvas.prototype.erase = function() {
