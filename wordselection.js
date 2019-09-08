@@ -24,10 +24,11 @@ canvas.setCallBack(function(data, err) {
             var div = document.createElement("div");
             div.innerHTML = word;
             div.addEventListener("click", function() {
-        var output = document.getElementById("output");
-        output.className = "output-container";
-        output.innerHTML += this.innerHTML;
-        });
+                var output = document.getElementById("output");
+                output.className = "output-container";
+                output.innerHTML += this.innerHTML;
+                canvas.erase();
+            });
             result.appendChild(div);
         });
     }
