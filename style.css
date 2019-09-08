@@ -1,24 +1,77 @@
-.flex-container {
-    width: 600px;
+.mi_container {
+    width: 96%;
+    border: 3px solid #00A2E8;
+    margin: 5px auto;
     display: flex;
-    flex-wrap: nowrap;
 }
 
-.flex-container > div {
-	margin: 5px;
+.mi_container_top {
+    height: 60%;
+}
+
+.mi_container_bottom {
+    height: 30%;
+}
+
+.mi_button_container {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.mi_right_container {
+    width: 80%;
+    height: 100%;
+}
+
+.mi_right_bottom_border {
+    border-style: solid;
+    border-color: #00A2E8;
+    border-width: 0px 0px 0px 3px;
+}
+
+.mi_button {
+    width: 60%;
+    margin: 1em 0;
+}
+
+.mi_canvas {
+    border-style: inset;
+    margin: auto;
+    cursor: crosshair;
+}
+
+.mi_suggestion_div {
+    width: 100%;
+    height: 40%;
+    border-style: solid;
+    border-color: #00A2E8;
+    border-width: 0px 0px 3px 0px;
+}
+
+.mi_suggestion {
+    width: 100%;
+    height: 100%;
+    display: table;
+    table-layout: fixed;
+}
+
+.mi_suggestion > div {
+    margin: 5px;
     text-align: center;
     font-size: 20px;
     border: 2px solid white;
     border-radius: 5px;
+    display: table-cell;
+    vertical-align: middle;
 }
 
-.flex-container > div:hover {
+.mi_suggestion > div:hover {
     border: 2px solid red;
     border-radius: 5px;
     cursor: default;
-}
-
-.output-container {
-    font-size: 20px;
-    height: 25px;
 }

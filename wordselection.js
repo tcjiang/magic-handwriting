@@ -1,19 +1,33 @@
-var canvas = new handwriting.Canvas(document.getElementById('canvas'), 3);
+var canvasNode = document.getElementById('canvas');
+fitToContainer(canvasNode);
+function fitToContainer(canvasNode) {
+  canvasNode.style.width='100%';
+  canvasNode.style.height='100%';
+  canvasNode.width  = canvasNode.offsetWidth;
+  canvasNode.height = canvasNode.offsetHeight;
+}
+
+function updateCanvas() {
+    var updatedCanvas = document.getElementById('canvas');
+    fitToContainer(updatedCanvas);
+}
+
+var canvas = new handwriting.Canvas(canvasNode, 3);
 canvas.setCallBack(function(data, err) {
     if (err) {
         throw err;
     }
     else {
-        var result = document.getElementById("result");
+        var result = document.getElementById("suggestion_list");
         result.innerHTML = "";
         data.forEach(function(word) {
             var div = document.createElement("div");
             div.innerHTML = word;
             div.addEventListener("click", function() {
-		var output = document.getElementById("output");
+        var output = document.getElementById("output");
         output.className = "output-container";
-		output.innerHTML += this.innerHTML;
-	    });
+        output.innerHTML += this.innerHTML;
+        });
             result.appendChild(div);
         });
     }

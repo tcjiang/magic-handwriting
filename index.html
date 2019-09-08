@@ -1,31 +1,37 @@
-<!DOCTYPE html>
-<html>
-
 <head>
-    <title>handwriting.js</title>
+    <title>magic input</title>
     <meta charset='utf-8'>
-    <script type="text/javascript" src="handwriting.canvas.js"></script>
+        <script type="text/javascript" src="handwriting.canvas.js"></script>
+    <link rel="stylesheet" href="bootstrap.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
-<div>
-  <span style="display : inline-block">
-    <canvas id="canvas" width="600" height="600" style="border: 2px solid; cursor: crosshair;"></canvas>
-    <br>
-    <button onclick="canvas.erase()">Erase</button>
-    <button onclick="canvas.undo()">Undo</button>
-    <button onclick="canvas.redo()">Redo</button>
-    <div id="result" class="flex-container"></div>
-    <p>Output:</p>
-    <div id="output"></div>
-    <br>
-    <button onclick="outputCut()">Cut</button>
-    <button onclick="outputErase()">Erase</button>
-    <button onclick="outputBack()">Delete</button>
-  </span>
-  <script type="text/javascript" src="wordselection.js"></script>
-</div>
+<body onresize="updateCanvas()">
+    <div id="top" class="mi_container mi_container_top">
+        <div id="top_left" class="mi_button_container">
+            <p class="font-weight-bolder">Write To Here ></p>
+            <button type="button" class="btn btn-primary mi_button" onclick="canvas.erase()">ERASE</button>
+            <button type="button" class="btn btn-primary mi_button" onclick="canvas.undo()">UNDO</button>
+            <button type="button" class="btn btn-primary mi_button" onclick="canvas.redo()">REDO</button>
+        </div>
+        <div id="top_right" class="mi_right_container">
+            <canvas id="canvas" class="mi_canvas"></canvas>
+        </div>
+    </div>
+    <div id="bottom" class="mi_container mi_container_bottom">
+        <div id="bottom_left" class="mi_button_container">
+            <button type="button" class="btn btn-info mi_button" onclick="outputCut()">CUT</button>
+            <button type="button" class="btn btn-info mi_button" onclick="outputErase()">CLEAR</button>
+            <button type="button" class="btn btn-info mi_button" onclick="outputBack()">DELETE</button>
+        </div>
+        <div id="bottom_right" class="mi_right_container mi_right_bottom_border">
+            <div id="suggestion_div" class="mi_suggestion_div">
+                <div id="suggestion_list" class="mi_suggestion"></div>
+            </div>
+            <div id="output"></div>
+        </div>
+    </div>
+    <script type="text/javascript" src="wordselection.js"></script>
 </body>
 
 </html>
